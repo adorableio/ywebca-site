@@ -1,0 +1,8 @@
+########################################
+# General Configuration
+########################################
+
+# PASSWORD PROTECT ON HEROKU
+# - uncomment the lines below if you want to use basic auth
+# username: someuser
+# password: password
