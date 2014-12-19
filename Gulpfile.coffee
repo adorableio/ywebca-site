@@ -9,6 +9,7 @@ ejs         = require("gulp-ejs")
 gutil       = require("gulp-util")
 jade        = require("gulp-jade")
 rename      = require("gulp-rename")
+flatten     = require("gulp-flatten")
 stylus      = require("gulp-stylus")
 browserify  = require("gulp-browserify")
 path        = require("path")
@@ -24,24 +25,37 @@ if process.env.NODE_ENV is "development"
 
 baseAppPath    = path.join(__dirname, "app")
 baseStaticPath = path.join(__dirname, ".generated")
+baseAssetsPath = path.join(baseStaticPath, "assets")
+baseVendorPath = path.join(__dirname, "bower_components")
+
 baseJsPath     = path.join(baseAppPath, "js")
 baseCssPath    = path.join(baseAppPath, "css")
+
 paths =
   cssInput       : path.join(baseCssPath, "main.styl")
-  cssOutput      : path.join(baseStaticPath, "css")
+  cssOutput      : path.join(baseAssetsPath, "css")
   coffeeInput    : path.join(baseJsPath, "app.coffee")
-  coffeeOutput   : path.join(baseStaticPath, "js")
+  coffeeOutput   : path.join(baseAssetsPath, "js")
   cleanPath      : path.join(baseStaticPath, "*")
   ejsPath        : [path.join(baseAppPath, "**", "*.ejs")]
   jadePath       : [path.join(baseAppPath, "**", "*.jade")]
 
   assetsBasePath : baseAppPath
-  assetsPaths: [
+  assetsInput: [
     path.join(baseAppPath, "img", "**", "*")
     path.join(baseAppPath, "fonts", "**", "*")
-    path.join(baseAppPath, "**", "*.html")
   ]
-  assetsOutput: baseStaticPath
+  assetsOutput: baseAssetsPath
+
+  htmlInput  : path.join(baseAppPath, "**", "*.html")
+  htmlOutput : baseStaticPath
+
+  vendorInput: [
+    path.join(baseVendorPath, "**", "*.min.js")
+    path.join(baseVendorPath, "**", "*.map")
+    path.join(baseVendorPath, "**", "*.css")
+  ]
+  vendorOutput: path.join(baseStaticPath, "vendor")
 
 watchPaths =
   css: [
@@ -50,7 +64,7 @@ watchPaths =
     path.join("**", "*", "*.styl*")
   ]
   coffee : [path.join(baseJsPath, "**", "*.coffee")]
-  assets : paths.assetsPaths
+  assets : [paths.assetsInput, paths.htmlInput]
   ejs    : paths.ejsPath
   jade   : paths.jadePath
 
@@ -102,10 +116,23 @@ gulp.task "ejs", ->
 # Static Assets
 #
 gulp.task "assets", ->
-  gulp.src(paths.assetsPaths, base: paths.assetsBasePath)
+  gulp.src(paths.assetsInput, base: paths.assetsBasePath)
     .on("error", gutil.log)
     .on("error", gutil.beep)
     .pipe gulp.dest(paths.assetsOutput)
+
+  gulp.src(paths.htmlInput, base: paths.assetsBasePath)
+    .on("error", gutil.log)
+    .on("error", gutil.beep)
+    .pipe gulp.dest(paths.htmlOutput)
+
+#
+# Vendor Assets
+#
+gulp.task "vendor", ->
+  gulp.src(paths.vendorInput)
+    .pipe(flatten())
+    .pipe(gulp.dest(paths.vendorOutput))
 
 #
 # Clean
@@ -147,6 +174,7 @@ gulp.task "default", ->
     "coffee"
     "stylus"
     "assets"
+    "vendor"
     "ejs"
     "jade"
   ]
