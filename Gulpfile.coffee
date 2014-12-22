@@ -143,6 +143,14 @@ gulp.task "vendor", ->
     .pipe(gulp.dest(paths.vendorOutput))
 
 #
+# Deploy to Github Pages
+#
+gulp.task "deploy", ["default"], ->
+  generatedSite = path.join(baseStaticPath, "**", "*")
+  gulp.src(generatedSite)
+    .pipe(deploy())
+
+#
 # Clean
 #
 gulp.task "clean", ->
