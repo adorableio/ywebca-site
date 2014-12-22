@@ -9,7 +9,6 @@ gulp        = require("gulp")
 browserify  = require("gulp-browserify")
 ejs         = require("gulp-ejs")
 flatten     = require("gulp-flatten")
-deploy      = require("gulp-gh-pages")
 jade        = require("gulp-jade")
 rename      = require("gulp-rename")
 stylus      = require("gulp-stylus")
@@ -50,9 +49,6 @@ paths =
 
   htmlInput  : path.join(baseAppPath, "**", "*.html")
   htmlOutput : baseStaticPath
-
-  cnameInput  : path.join(baseAppPath, "**", "CNAME")
-  cnameOutput : baseStaticPath
 
   vendorInput: [
     path.join(baseVendorPath, "**", "*.min.js")
@@ -130,10 +126,6 @@ gulp.task "assets", ->
     .on("error", gutil.beep)
     .pipe gulp.dest(paths.htmlOutput)
 
-  gulp.src(paths.cnameInput, base: paths.assetsBasePath)
-    .on("error", gutil.log)
-    .on("error", gutil.beep)
-    .pipe gulp.dest(paths.cnameOutput)
 #
 # Vendor Assets
 #
@@ -141,23 +133,6 @@ gulp.task "vendor", ->
   gulp.src(paths.vendorInput)
     .pipe(flatten())
     .pipe(gulp.dest(paths.vendorOutput))
-
-#
-# Deploy to Github Pages
-#
-gulp.task "deploy", ->
-  generatedSite = path.join(baseStaticPath, "**", "*")
-
-  runSequence "clean",
-    "coffee",
-    "stylus",
-    "assets",
-    "vendor",
-    "ejs",
-    "jade",
-    ->
-      gulp.src(generatedSite)
-        .pipe(deploy())
 
 #
 # Clean
