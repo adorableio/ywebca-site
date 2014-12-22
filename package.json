@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node_modules/.bin/nodemon start.coffee"
+    "start": "node_modules/.bin/nodemon start.coffee",
+    "postinstall": "node_modules/.bin/bower install"
   },
   "author": "",
   "license": "ISC",
