@@ -145,10 +145,19 @@ gulp.task "vendor", ->
 #
 # Deploy to Github Pages
 #
-gulp.task "deploy", ["default"], ->
+gulp.task "deploy", ->
   generatedSite = path.join(baseStaticPath, "**", "*")
-  gulp.src(generatedSite)
-    .pipe(deploy())
+
+  runSequence "clean",
+    "coffee",
+    "stylus",
+    "assets",
+    "vendor",
+    "ejs",
+    "jade",
+    ->
+      gulp.src(generatedSite)
+        .pipe(deploy())
 
 #
 # Clean
