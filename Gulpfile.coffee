@@ -4,19 +4,19 @@ dotenv.load()
 
 # Gulpfile.js
 # Require the needed packages
+del         = require("del")
 gulp        = require("gulp")
+browserify  = require("gulp-browserify")
 ejs         = require("gulp-ejs")
-gutil       = require("gulp-util")
+flatten     = require("gulp-flatten")
+deploy      = require("gulp-gh-pages")
 jade        = require("gulp-jade")
 rename      = require("gulp-rename")
-flatten     = require("gulp-flatten")
 stylus      = require("gulp-stylus")
-browserify  = require("gulp-browserify")
-deploy      = require("gulp-gh-pages")
+gutil       = require("gulp-util")
 path        = require("path")
-vinylPaths  = require("vinyl-paths")
-del         = require("del")
 runSequence = require("run-sequence")
+vinylPaths  = require("vinyl-paths")
 
 livereload = findPort = undefined
 
