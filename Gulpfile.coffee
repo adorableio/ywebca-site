@@ -51,6 +51,9 @@ paths =
   htmlInput  : path.join(baseAppPath, "**", "*.html")
   htmlOutput : baseStaticPath
 
+  cnameInput  : path.join(baseAppPath, "**", "CNAME")
+  cnameOutput : baseStaticPath
+
   vendorInput: [
     path.join(baseVendorPath, "**", "*.min.js")
     path.join(baseVendorPath, "**", "*.map")
@@ -127,6 +130,10 @@ gulp.task "assets", ->
     .on("error", gutil.beep)
     .pipe gulp.dest(paths.htmlOutput)
 
+  gulp.src(paths.cnameInput, base: paths.assetsBasePath)
+    .on("error", gutil.log)
+    .on("error", gutil.beep)
+    .pipe gulp.dest(paths.cnameOutput)
 #
 # Vendor Assets
 #
