@@ -1,3 +1,4 @@
+$orange = #f36228;
 $black = #222229;
 $white = #fff;
 $grey = #d1d1da;
@@ -38,6 +39,7 @@ build-section($background-color, $color = false) {
 section {
   &.overview {
     build-section($white);
+    h1 { color: $orange; }
   }
   &.opportunities {
     build-section($light-grey);
