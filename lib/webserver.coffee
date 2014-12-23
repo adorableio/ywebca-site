@@ -41,6 +41,23 @@ app.use(favicon(faviconPath))
 app.use('/assets', express.static(assetsPath))
 app.use('/vendor', express.static(vendorPath))
 
+# Build the wufoo post body
+buildWufooPostObject = (body) ->
+  postObject = {
+    Field1  : body.first_name
+    Field2  : body.last_name
+    Field9  : body.email
+    Field212: body.questions
+  }
+
+  postObject.Field12 = body.speaker if body.speaker
+  postObject.Field13 = body.mentor if body.mentor
+  postObject.Field14 = body.volunteer if body.volunteer
+  postObject.Field15 = body.internship if body.internship
+  postObject.Field16 = body.site_tour if body.site_tour
+
+  return postObject
+
 # Find an available port
 port = process.env.PORT || 3002
 if port > 3002
@@ -62,5 +79,10 @@ app.get /^\/(\w+)(?:\.)?(\w+)?/, (req, res) ->
   ext  = req.params[1] ? "html"
   res.render(path.join(generatedPath, "#{path}.#{ext}"))
 
+app.post '/submissions', (req, res) ->
+  postObject = buildWufooPostObject(req.body)
+  # console.log "Would post: " + JSON.stringify(postObject)
+
+  res.render(generatedPath + '/thanks.html', {data: config})
 
 module.exports = app
