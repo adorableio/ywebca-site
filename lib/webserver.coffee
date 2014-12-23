@@ -9,6 +9,7 @@ colors     = require('colors')
 basicAuth  = require('basic-auth-connect')
 fs         = require('fs')
 yaml       = require('js-yaml')
+request    = require('request')
 
 # Function to load files from our data folder
 getDataFile = (file) ->
@@ -83,6 +84,15 @@ app.post '/submissions', (req, res) ->
   postObject = buildWufooPostObject(req.body)
   # console.log "Would post: " + JSON.stringify(postObject)
 
-  res.render(generatedPath + '/thanks.html', {data: config})
+  request.post(config.wufooPostUrl)
+         .on('response', (response) ->
+            if response.statusCode == 201
+              res.render(generatedPath + '/thanks.html', {data: config})
+            else
+              console.log "[ERROR] Wufoo returned status code #{response.statusCode} on POST"
+              res.render(generatedPath + '/thanks.html', {data: config})
+         )
+         .auth(config.wufooApiKey, config.wufooApiPassword)
+         .form(postObject)
 
 module.exports = app

@@ -6,3 +6,11 @@
 # - uncomment the lines below if you want to use basic auth
 # username: someuser
 # password: password
+
+########################################
+# Wufoo Configuration
+########################################
+wufooApiKey: RGTT-DKLB-N9R3-R19U
+wufooApiPassword: anything
+wufooPostUrl: https://sapling.wufoo.com/api/v3/forms/how-can-i-help/entries.json
+
