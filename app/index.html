@@ -122,6 +122,69 @@
     </div>
   </section>
 
+  <section class="form how-can-i-help">
+    <form action="/submissions" method="POST">
+      <div class="row">
+        <div class="small-12 medium-8 medium-offset-2 columns">
+          <h2>How Can I Help?</h2>
+          <p>
+          There are a variety of ways that you can lend a hand. Please fill out
+          the form below and we'll contact you as soon as possible to setup
+          something up.
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 medium-4 medium-offset-2 columns">
+          <label>First Name
+            <input type="text" name="first_name" />
+          </label>
+        </div>
+        <div class="small-12 medium-4 columns end">
+          <label>Last Name
+            <input type="text" name="last_name" />
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 medium-8 medium-offset-2 columns">
+          <label>Email Address
+            <input type="text" name="email" />
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 medium-8 medium-offset-2 columns">
+          <label>I would like to assist in the following ways</label>
+          <ul>
+            <li><input type="checkbox" value="speaker" name="speaker" id="opportunities[speaker]"><label for="opportunities[speaker]">Speaker</label><br></li>
+            <li><input type="checkbox" value="mentor" name="mentor" id="opportunities[mentor]"><label for="opportunities[mentor]">Mentor</label><br></li>
+            <li><input type="checkbox" value="volunteer" name="volunteer" id="opportunities[volunteer]"><label for="opportunities[volunteer]">Volunteer</label><br></li>
+            <li><input type="checkbox" value="internship" name="internship" id="opportunities[internship]"><label for="opportunities[internship]">Internship</label><br></li>
+            <li><input type="checkbox" value="site_tour" name="site_tour" id="opportunities[tours]"><label for="opportunities[tours]">Site Tour</label></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 medium-8 medium-offset-2 columns">
+          <label>Additional questions or comments
+            <textarea name="questions" rows="5"></textarea>
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-12 medium-8 medium-offset-2 columns">
+          <button type="submit" class="button">Submit</button>
+        </div>
+      </div>
+    </form>
+  </section>
+
   <section class="form">
     <div class="row wufoo-form">
       <div class="small-12 columns">
@@ -151,5 +214,5 @@
 
   <script src="/vendor/jquery.min.js"></script>
   <script src="/assets/js/app.js"></script>
-</body>
+  </body>
 </html>
