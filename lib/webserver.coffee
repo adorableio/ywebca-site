@@ -1,13 +1,14 @@
 
-http      = require('http')
-express   = require('express')
-path      = require('path')
-favicon   = require('serve-favicon')
-findPort  = require('find-port')
-colors    = require('colors')
-basicAuth = require('basic-auth-connect')
-fs        = require('fs')
-yaml      = require('js-yaml')
+http       = require('http')
+express    = require('express')
+bodyParser = require('body-parser')
+path       = require('path')
+favicon    = require('serve-favicon')
+findPort   = require('find-port')
+colors     = require('colors')
+basicAuth  = require('basic-auth-connect')
+fs         = require('fs')
+yaml       = require('js-yaml')
 
 # Function to load files from our data folder
 getDataFile = (file) ->
@@ -18,6 +19,8 @@ getDataFile = (file) ->
     console.log(err)
 
 app           = express()
+app.use(bodyParser.urlencoded({extended: false}))
+
 webserver     = http.createServer(app)
 basePath      = path.join(__dirname, '..')
 generatedPath = path.join(basePath, '.generated')
