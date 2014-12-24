@@ -21,8 +21,6 @@ getDataFile = (file) ->
     console.log(err)
 
 app           = express()
-app.use(bodyParser.urlencoded({extended: false}))
-
 webserver     = http.createServer(app)
 basePath      = path.join(__dirname, '..')
 generatedPath = path.join(basePath, '.generated')
@@ -63,7 +61,7 @@ app.get '/', (req, res) ->
 app.get /^\/(\w+)(?:\.)?(\w+)?/, (req, res) ->
   path = req.params[0]
   ext  = req.params[1] ? "html"
-  res.render(path.join(generatedPath, "#{path}.#{ext}"))
+  res.render("#{generatedPath}/#{path}.#{ext}")
 
 app.post '/submissions', (req, res) ->
   request.post(config.wufooPostUrl)
