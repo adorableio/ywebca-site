@@ -26,6 +26,13 @@ $section-base {
   }
 }
 
+$cta-button {
+  background-color: $orange;
+  &:hover {
+    background-color: darken($orange, 10%);
+  }
+}
+
 set-font-colors($color) {
   h1,h2,h3,h4,h5,h6,p,li { color: $color; }
 }
@@ -83,10 +90,15 @@ section {
     text-align: center;
 
     .cta-go-back {
-      background-color: $orange;
-      &:hover {
-        background-color: darken($orange, 10%);
-      }
+      @extend $cta-button;
+    }
+  }
+  &.error-while-saving {
+    build-section($light-grey);
+    text-align: center;
+
+    .cta-email-us {
+      @extend $cta-button;
     }
   }
 }

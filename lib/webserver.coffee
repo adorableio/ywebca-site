@@ -72,7 +72,7 @@ app.post '/submissions', (req, res) ->
               res.render(generatedPath + '/thanks.html', {data: config})
             else
               console.log "[ERROR] Wufoo returned status code #{response.statusCode} on POST"
-              res.render(generatedPath + '/thanks.html', {data: config})
+              res.render(generatedPath + '/error.html', {data: config})
          )
          .auth(config.wufooApiKey, config.wufooApiPassword)
          .form(buildWufoo(req.body))
