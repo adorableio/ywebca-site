@@ -10,6 +10,7 @@ basicAuth  = require('basic-auth-connect')
 fs         = require('fs')
 yaml       = require('js-yaml')
 request    = require('request')
+buildWufoo = require('./wufoo-translator')
 
 # Function to load files from our data folder
 getDataFile = (file) ->
@@ -39,25 +40,9 @@ if config.username? || config.password?
 # Configure the express server
 app.engine('.html', require('hbs').__express)
 app.use(favicon(faviconPath))
+app.use(bodyParser.urlencoded({extended: false}))
 app.use('/assets', express.static(assetsPath))
 app.use('/vendor', express.static(vendorPath))
-
-# Build the wufoo post body
-buildWufooPostObject = (body) ->
-  postObject = {
-    Field1  : body.first_name
-    Field2  : body.last_name
-    Field9  : body.email
-    Field212: body.questions
-  }
-
-  postObject.Field12 = body.speaker if body.speaker
-  postObject.Field13 = body.mentor if body.mentor
-  postObject.Field14 = body.volunteer if body.volunteer
-  postObject.Field15 = body.internship if body.internship
-  postObject.Field16 = body.site_tour if body.site_tour
-
-  return postObject
 
 # Find an available port
 port = process.env.PORT || 3002
@@ -81,9 +66,6 @@ app.get /^\/(\w+)(?:\.)?(\w+)?/, (req, res) ->
   res.render(path.join(generatedPath, "#{path}.#{ext}"))
 
 app.post '/submissions', (req, res) ->
-  postObject = buildWufooPostObject(req.body)
-  # console.log "Would post: " + JSON.stringify(postObject)
-
   request.post(config.wufooPostUrl)
          .on('response', (response) ->
             if response.statusCode == 201
@@ -93,6 +75,6 @@ app.post '/submissions', (req, res) ->
               res.render(generatedPath + '/thanks.html', {data: config})
          )
          .auth(config.wufooApiKey, config.wufooApiPassword)
-         .form(postObject)
+         .form(buildWufoo(req.body))
 
 module.exports = app
