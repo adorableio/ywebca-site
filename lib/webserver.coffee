@@ -1,13 +1,16 @@
 
-http      = require('http')
-express   = require('express')
-path      = require('path')
-favicon   = require('serve-favicon')
-findPort  = require('find-port')
-colors    = require('colors')
-basicAuth = require('basic-auth-connect')
-fs        = require('fs')
-yaml      = require('js-yaml')
+http       = require('http')
+express    = require('express')
+bodyParser = require('body-parser')
+path       = require('path')
+favicon    = require('serve-favicon')
+findPort   = require('find-port')
+colors     = require('colors')
+basicAuth  = require('basic-auth-connect')
+fs         = require('fs')
+yaml       = require('js-yaml')
+request    = require('request')
+buildWufoo = require('./wufoo-translator')
 
 # Function to load files from our data folder
 getDataFile = (file) ->
@@ -35,6 +38,7 @@ if config.username? || config.password?
 # Configure the express server
 app.engine('.html', require('hbs').__express)
 app.use(favicon(faviconPath))
+app.use(bodyParser.urlencoded({extended: false}))
 app.use('/assets', express.static(assetsPath))
 app.use('/vendor', express.static(vendorPath))
 
@@ -57,7 +61,18 @@ app.get '/', (req, res) ->
 app.get /^\/(\w+)(?:\.)?(\w+)?/, (req, res) ->
   path = req.params[0]
   ext  = req.params[1] ? "html"
-  res.render(path.join(generatedPath, "#{path}.#{ext}"))
+  res.render("#{generatedPath}/#{path}.#{ext}")
 
+app.post '/submissions', (req, res) ->
+  request.post(config.wufooPostUrl)
+         .on('response', (response) ->
+            if response.statusCode == 201
+              res.render(generatedPath + '/thanks.html', {data: config})
+            else
+              console.log "[ERROR] Wufoo returned status code #{response.statusCode} on POST"
+              res.render(generatedPath + '/error.html', {data: config})
+         )
+         .auth(config.wufooApiKey, config.wufooApiPassword)
+         .form(buildWufoo(req.body))
 
 module.exports = app

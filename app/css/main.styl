@@ -1,3 +1,4 @@
+$orange = #f36228;
 $black = #222229;
 $white = #fff;
 $grey = #d1d1da;
@@ -25,6 +26,13 @@ $section-base {
   }
 }
 
+$cta-button {
+  background-color: $orange;
+  &:hover {
+    background-color: darken($orange, 10%);
+  }
+}
+
 set-font-colors($color) {
   h1,h2,h3,h4,h5,h6,p,li { color: $color; }
 }
@@ -38,6 +46,7 @@ build-section($background-color, $color = false) {
 section {
   &.overview {
     build-section($white);
+    h1 { color: $orange; }
   }
   &.opportunities {
     build-section($light-grey);
@@ -76,5 +85,32 @@ section {
   &.form {
     build-section($light-grey);
   }
+  &.thanks {
+    build-section($light-grey);
+    text-align: center;
+
+    .cta-go-back {
+      @extend $cta-button;
+    }
+  }
+  &.error-while-saving {
+    build-section($light-grey);
+    text-align: center;
+
+    .cta-email-us {
+      @extend $cta-button;
+    }
+  }
 }
 
+.how-can-i-help {
+  form {
+    label { font-weight: bold; }
+    ul {
+      list-style: none;
+      padding-top: 10px;
+      margin-left: 0;
+      li { padding-top: 5px; }
+    }
+  }
+}
