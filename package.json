@@ -2,7 +2,7 @@
   "name": "ywebca-site",
   "version": "0.0.1",
   "description": "",
-  "main": "index.coffee",
+  "main": "start.coffee",
   "engines": {
     "node": "0.10.x"
   },
