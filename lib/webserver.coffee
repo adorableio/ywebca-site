@@ -19,8 +19,12 @@ getDataFile = (file) ->
   catch err
     console.log(err)
 
-# Get our data file
-config        = {}
+app       = express()
+webserver = http.createServer(app)
+config    = {}
+
+
+# Setup path helpers
 basePath      = path.join(__dirname, '..')
 generatedPath = path.join(basePath, '.generated')
 assetsPath    = path.join(generatedPath, 'assets')
@@ -28,8 +32,7 @@ vendorPath    = path.join(generatedPath, 'vendor')
 faviconPath   = path.join(basePath, 'app', 'favicon.ico')
 
 server = (options = {})->
-  app       = express()
-  webserver = http.createServer(app)
+  # Get our data file
   config    = getDataFile('config.yaml')
 
   # Configure the express server
