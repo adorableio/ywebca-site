@@ -66,7 +66,9 @@ routes = (app) ->
   app.get /^\/(\w+)(?:\.)?(\w+)?/, (req, res) ->
     path = req.params[0]
     ext  = req.params[1] ? "html"
-    res.render("#{generatedPath}/#{path}.#{ext}")
+    res.render "#{generatedPath}/#{path}.#{ext}", {}, (err, html) ->
+      # Handle 404
+      return res.render("#{generatedPath}/404.html") if (err)
 
   app.post '/submissions', (req, res) ->
     request.post(config.wufooPostUrl)
@@ -79,5 +81,10 @@ routes = (app) ->
            )
            .auth(config.wufooApiKey, config.wufooApiPassword)
            .form(buildWufoo(req.body))
+
+  # Handle 500
+  app.use (err, req, res, next) ->
+    console.error err.stack
+    res.send(500, 'Something broke!')
 
 module.exports = server
