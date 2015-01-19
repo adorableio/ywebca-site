@@ -1,4 +1,3 @@
-
 http       = require('http')
 express    = require('express')
 bodyParser = require('body-parser')
@@ -20,59 +19,75 @@ getDataFile = (file) ->
   catch err
     console.log(err)
 
-app           = express()
-webserver     = http.createServer(app)
+app       = express()
+webserver = http.createServer(app)
+config    = {}
+
+
+# Setup path helpers
 basePath      = path.join(__dirname, '..')
 generatedPath = path.join(basePath, '.generated')
 assetsPath    = path.join(generatedPath, 'assets')
 vendorPath    = path.join(generatedPath, 'vendor')
 faviconPath   = path.join(basePath, 'app', 'favicon.ico')
 
-# Get our data file
-config       = getDataFile('config.yaml')
+server = (options = {})->
+  # Get our data file
+  config    = getDataFile('config.yaml')
 
-# Use Basic Auth?
-if config.username? || config.password?
-  app.use(basicAuth(config.username, config.password)) if process.env.DYNO?
+  # Configure the express server
+  app.engine('.html', require('hbs').__express)
+  app.use(favicon(faviconPath))
+  app.use(bodyParser.urlencoded({extended: false}))
+  app.use('/assets', express.static(assetsPath))
+  app.use('/vendor', express.static(vendorPath))
 
-# Configure the express server
-app.engine('.html', require('hbs').__express)
-app.use(favicon(faviconPath))
-app.use(bodyParser.urlencoded({extended: false}))
-app.use('/assets', express.static(assetsPath))
-app.use('/vendor', express.static(vendorPath))
+  routes(app)
 
-# Find an available port
-port = process.env.PORT || 3002
-if port > 3002
-  webserver.listen(port)
-else
-  findPort port, port + 100, (ports) -> webserver.listen(ports[0])
+  # Use Basic Auth?
+  if config.username? || config.password? && process.env.DYNO?
+    app.use(basicAuth(config.username, config.password))
 
-# Notify the console that we're connected and on what port
-webserver.on 'listening', ->
-  address = webserver.address()
-  console.log "[Firepit] Server running at http://#{address.address}:#{address.port}".green
+  # Find an available port
+  port = options.port || process.env.PORT || 3002
+  if port > 3002
+    webserver.listen(port)
+  else
+    findPort port, port + 100, (ports) ->
+      webserver.listen(ports[0])
 
-# Routes
-app.get '/', (req, res) ->
-  res.render(generatedPath + '/index.html', {data: config})
+  # Notify the console that we're connected and on what port
+  webserver.on 'listening', ->
+    address = webserver.address()
+    console.log "[Firepit] Server running at http://#{address.address}:#{address.port}".green
 
-app.get /^\/(\w+)(?:\.)?(\w+)?/, (req, res) ->
-  path = req.params[0]
-  ext  = req.params[1] ? "html"
-  res.render("#{generatedPath}/#{path}.#{ext}")
+routes = (app) ->
+  # Routes
+  app.get '/', (req, res) ->
+    res.render(generatedPath + '/index.html', {data: config})
 
-app.post '/submissions', (req, res) ->
-  request.post(config.wufooPostUrl)
-         .on('response', (response) ->
-            if response.statusCode == 201
-              res.render(generatedPath + '/thanks.html', {data: config})
-            else
-              console.log "[ERROR] Wufoo returned status code #{response.statusCode} on POST"
-              res.render(generatedPath + '/error.html', {data: config})
-         )
-         .auth(config.wufooApiKey, config.wufooApiPassword)
-         .form(buildWufoo(req.body))
+  app.get /^\/(\w+)(?:\.)?(\w+)?/, (req, res) ->
+    path = req.params[0]
+    ext  = req.params[1] ? "html"
+    res.render "#{generatedPath}/#{path}.#{ext}", {}, (err, html) ->
+      # Handle 404
+      return res.render("#{generatedPath}/404.html") if (err)
 
-module.exports = app
+  app.post '/submissions', (req, res) ->
+    request.post(config.wufooPostUrl)
+           .on('response', (response) ->
+              if response.statusCode == 201
+                res.render(generatedPath + '/thanks.html', {data: config})
+              else
+                console.log "[ERROR] Wufoo returned status code #{response.statusCode} on POST"
+                res.render(generatedPath + '/error.html', {data: config})
+           )
+           .auth(config.wufooApiKey, config.wufooApiPassword)
+           .form(buildWufoo(req.body))
+
+  # Handle 500
+  app.use (err, req, res, next) ->
+    console.error err.stack
+    res.send(500, 'Something broke!')
+
+module.exports = server

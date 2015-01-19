@@ -135,6 +135,13 @@ gulp.task "vendor", ->
     .pipe(gulp.dest(paths.vendorOutput))
 
 #
+# Server
+#
+gulp.task "server", ["watch"], ->
+  server = require('./lib/webserver')
+  return server()
+
+#
 # Clean
 #
 gulp.task "clean", ->
@@ -167,14 +174,12 @@ gulp.task "watch", ["default"], ->
         gutil.log "[LiveReload] Can't start LiveReload => ALREADY RUNNING".red
       return
 
-  return
-
-gulp.task "default", ->
-  runSequence "clean", [
+gulp.task "default", (callback) ->
+  return runSequence "clean",
     "coffee"
     "stylus"
     "assets"
     "vendor"
     "ejs"
     "jade"
-  ]
+    callback
