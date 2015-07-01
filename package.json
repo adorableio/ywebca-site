@@ -4,7 +4,6 @@
   "version": "0.0.1",
   "description": "",
   "keywords": [],
-
   "dependencies": {
     "babel-core": "^5.4.2",
     "babel-loader": "^5.1.0",
@@ -38,7 +37,8 @@
     "webpack": "^1.9.6"
   },
   "devDependencies": {
-    "chai": "^1.10.0"
+    "chai": "^1.10.0",
+    "gulp-gh-pages": "^0.5.2"
   },
   "scripts": {
     "postinstall": "bower install && gulp",

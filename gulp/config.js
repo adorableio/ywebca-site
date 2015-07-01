@@ -7,8 +7,11 @@ config.DIST = path.join(config.PROJECT_ROOT, 'dist');
 
 var envAssets = require('./environment/' + environment);
 
+var bowerFiles = $.mainBowerFiles();
 var vendorAssetsOther = [];
-config.VENDOR_ASSETS = $.mainBowerFiles().concat(vendorAssetsOther, envAssets.vendor);
+if (bowerFiles === null) { bowerFiles = []; }
+
+config.VENDOR_ASSETS = bowerFiles.concat(vendorAssetsOther, envAssets.vendor);
 
 config.assets = {
   src: config.PROJECT_ROOT + '/src/**/*.{png,jpg,ttf,html,ico,svg}',
