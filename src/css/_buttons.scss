@@ -1,0 +1,18 @@
+.button {
+  background: $blue;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  padding: 12px;
+  border: 0;
+  transition: background 0.15s;
+  &:focus,
+  &:hover {
+    background: lighten($blue, 15%);
+  }
+}
+
+.button-full-width {
+  display: block;
+}

@@ -1,0 +1,56 @@
+.pre-footer {
+  background: $orange;
+  text-align: center;
+  padding: 50px 0;
+  h2 {
+    color: white;
+    margin: 0 0 2rem 0;
+  }
+}
+
+.tech-partners {
+  margin: 100px 0 0 0;
+}
+.academy-funders {
+  background: darken($orange, 10%);
+}
+
+.thanks-list {
+  list-style: none;
+  li {
+    display: inline-block;
+  }
+  a {
+    color: white;
+    border: 0;
+    display: inline-block;
+    padding: 5px 10px;
+    background: rgba(black, 0.2);
+    border-radius: 5px;
+    margin: 0 10px 10px 0;
+    transition: 0.1s;
+    &:hover,
+    &:active {
+      background: rgba(black, 0.6);
+    }
+  }
+}
+
+.site-footer {
+  background: $orange url(../images/footer.jpg) top center;
+  background-size: cover;
+  padding-top: 800px;
+  padding-bottom: 50px;
+  color: white;
+  font-size: 75%;
+  p {
+    margin: 0 0 0.2rem 0;
+  }
+  @media #{$breakpoint} {
+    background: #222222;
+    padding: 40px 10px;
+    p {
+      margin: 0 0 0.5rem 0;
+    }
+  }
+}
