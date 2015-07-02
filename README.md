@@ -11,5 +11,9 @@ npm install
 $(npm bin)/gulp serve
 ```
 
+### Deploy
+```shell
+$(npm bin)/gulp deploy
+```
 
 For the [YWebCA](http://ywebca.org/).
