@@ -14,7 +14,10 @@ if (bowerFiles === null) { bowerFiles = []; }
 config.VENDOR_ASSETS = bowerFiles.concat(vendorAssetsOther, envAssets.vendor);
 
 config.assets = {
-  src: config.PROJECT_ROOT + '/src/**/*.{png,jpg,ttf,html,ico,svg}',
+  src: [
+    path.join(config.PROJECT_ROOT, 'src/**/*.{png,jpg,ttf,html,ico,svg}'),
+    path.join(config.PROJECT_ROOT, 'src/CNAME')
+  ],
   dest: config.DIST
 };
 
