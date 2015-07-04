@@ -194,3 +194,22 @@ img {
     padding: 5px;
   }
 }
+
+.footer-left {
+  float: left;
+}
+.footer-right {
+  float: right;
+}
+.ywca-logo {
+  max-width: 200px;
+}
+@media #{$breakpoint} {
+  .footer-left,
+  .footer-right {
+    float: none;
+  }
+  .footer-right {
+    padding-top: 20px;
+  }
+}
