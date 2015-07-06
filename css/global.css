@@ -342,3 +342,19 @@ img {
   @media (max-width: 600px) {
     .contact-form {
       padding: 5px; } }
+
+.footer-left {
+  float: left; }
+
+.footer-right {
+  float: right; }
+
+.ywca-logo {
+  max-width: 200px; }
+
+@media (max-width: 600px) {
+  .footer-left,
+  .footer-right {
+    float: none; }
+  .footer-right {
+    padding-top: 20px; } }
