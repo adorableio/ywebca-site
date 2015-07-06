@@ -239,6 +239,7 @@ figure {
 
 .wrap {
   max-width: 900px;
+  padding: 0 20px;
   margin: 0 auto;
   overflow: hidden; }
 
@@ -260,8 +261,7 @@ img {
   .main,
   .sidebar {
     width: 100%;
-    float: none;
-    padding: 10px; } }
+    float: none; } }
 
 .by {
   margin: 0;
@@ -352,7 +352,7 @@ img {
 .ywca-logo {
   max-width: 200px; }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .footer-left,
   .footer-right {
     float: none; }
