@@ -41,7 +41,7 @@
     "gulp-gh-pages": "^0.5.2"
   },
   "scripts": {
-    "postinstall": "bower install && gulp",
+    "postinstall": "$(npm bin)/bower install && $(npm bin)/gulp",
     "start": "$(npm bin)/gulp serve",
     "test": "mocha"
   }
