@@ -28,7 +28,7 @@
     "jshint-stylish": "^2.0.0",
     "jsx-loader": "^0.13.2",
     "lodash": "^3.8.0",
-    "main-bower-files": "^2.8.0",
+    "main-bower-files": "^2.8.2",
     "mocha": "^2.0.1",
     "node-bourbon": "^4.2.2",
     "node-libs-browser": "^0.5.0",
@@ -41,7 +41,7 @@
     "gulp-gh-pages": "^0.5.2"
   },
   "scripts": {
-    "postinstall": "bower install && gulp",
+    "postinstall": "$(npm bin)/bower install && $(npm bin)/gulp",
     "start": "$(npm bin)/gulp serve",
     "test": "mocha"
   }
