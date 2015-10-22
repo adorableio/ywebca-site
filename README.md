@@ -12,7 +12,7 @@ npm install
 $(npm bin)/gulp serve
 ```
 
-### Deployment workflow
+### Contribution workflow
 
 1. Create a branch off of master
 2. Commit your changes, open a PR back to master
