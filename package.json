@@ -43,6 +43,7 @@
   "scripts": {
     "postinstall": "$(npm bin)/bower install && $(npm bin)/gulp",
     "start": "$(npm bin)/gulp serve",
+    "deploy": "$(npm bin)/gulp deploy",
     "test": "mocha"
   },
   "engines": {
