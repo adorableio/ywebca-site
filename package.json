@@ -44,5 +44,8 @@
     "postinstall": "$(npm bin)/bower install && $(npm bin)/gulp",
     "start": "$(npm bin)/gulp serve",
     "test": "mocha"
+  },
+  "engines": {
+    "node": ">=4.0.0"
   }
 }
