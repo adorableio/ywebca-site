@@ -31,8 +31,7 @@ a {
   text-decoration: none;
   color: #4A90E2;
   border-bottom: 1px solid #cee1f7; }
-  a:hover,
-  a:focus {
+  a:hover, a:focus {
     border-bottom-color: #2275d7; }
 
 figure {
@@ -98,8 +97,7 @@ figure {
   padding: 12px;
   border: 0;
   transition: background 0.15s; }
-  .button:focus,
-  .button:hover {
+  .button:focus, .button:hover {
     background: #8cb8ed; }
 
 .button-full-width {
@@ -145,8 +143,7 @@ figure {
     border-bottom: 1px solid #444;
     display: block;
     transition: 0.2s; }
-    .menu-screen li a:hover,
-    .menu-screen li a:active {
+    .menu-screen li a:hover, .menu-screen li a:active {
       background: #222; }
   .menu-screen .close {
     text-align: center; }
@@ -182,8 +179,7 @@ figure {
     border-radius: 5px;
     margin: 0 10px 10px 0;
     transition: 0.1s; }
-    .thanks-list a:hover,
-    .thanks-list a:active {
+    .thanks-list a:hover, .thanks-list a:active {
       background: rgba(0, 0, 0, 0.6); }
 
 .site-footer {
@@ -231,8 +227,7 @@ figure {
   .mega-header a {
     color: inherit;
     border-bottom: 1px dotted; }
-    .site-header a:hover,
-    .site-header a:active,
+    .site-header a:hover, .site-header a:active,
     .mega-header a:hover,
     .mega-header a:active {
       border-bottom-style: solid; }
