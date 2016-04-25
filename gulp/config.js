@@ -16,7 +16,8 @@ config.VENDOR_ASSETS = bowerFiles.concat(vendorAssetsOther, envAssets.vendor);
 config.assets = {
   src: [
     path.join(config.PROJECT_ROOT, 'src/**/*.{png,jpg,ttf,html,ico,svg}'),
-    path.join(config.PROJECT_ROOT, 'src/CNAME')
+    path.join(config.PROJECT_ROOT, 'src/CNAME'),
+    path.join(config.PROJECT_ROOT, 'src/sitemap.xml')
   ],
   dest: config.DIST
 };
