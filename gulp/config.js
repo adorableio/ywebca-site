@@ -17,6 +17,7 @@ config.assets = {
   src: [
     path.join(config.PROJECT_ROOT, 'src/**/*.{png,jpg,ttf,html,ico,svg}'),
     path.join(config.PROJECT_ROOT, 'src/CNAME'),
+    path.join(config.PROJECT_ROOT, 'src/robots.txt'),
     path.join(config.PROJECT_ROOT, 'src/sitemap.xml')
   ],
   dest: config.DIST
