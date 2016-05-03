@@ -1,7 +1,7 @@
 dependencies:
   pre:
-    - git config user.name "Circle CI"
-    - git config user.email "bot@adorable.io"
+    - git config --global user.name "Circle CI"
+    - git config --global user.email "bot@adorable.io"
 
 deployment:
   production:
