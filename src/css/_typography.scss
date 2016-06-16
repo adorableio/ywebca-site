@@ -40,11 +40,21 @@ a {
   }
 }
 
+a.samples-sites  {
+  border-bottom: 0;
+  color: white;  
+  
+  &:hover {
+    color: lighten($orange, 20%);
+  }
+}
+
+
 figure {
   margin-bottom: 1rem;
   figcaption {
     font-size: 85%;
-    color: #ccc;
+    color: #F36228;
     font-style: italic;
   }
 }

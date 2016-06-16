@@ -85,6 +85,15 @@ img {
     font-size: 85%;
   }
 }
+
+video {
+  width: 100%;
+  background-color:$orange;
+  margin-bottom: 2em;
+}
+
+
+
 @media #{$breakpoint} {
   .main,
   .sidebar {
@@ -160,7 +169,12 @@ img {
       margin: 0;
     }
   }
+
+  strong{
+    color: $orange;
+  }
 }
+
 .candidate-list {
   font-size: 125%;
   strong {
