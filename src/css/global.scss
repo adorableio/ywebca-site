@@ -67,7 +67,7 @@ $breakpoint: "(max-width: 600px)";
   padding: 0 20px;
   margin: 0 auto;
   overflow: hidden;
-}
+  }
 
 img {
   max-width: 100%;
@@ -161,6 +161,7 @@ iframe {
    width: 100%;
    height: 200px;
    border: 0;
+   margin-bottom: 3.2em;
 }
 
 .things-to-know-list {
@@ -181,20 +182,38 @@ iframe {
   }
 }
 
+#box {
+  text-align: center;
+}
+
 .port {
   width: 32.5%;
-  border: solid 2px white;
+  margin-top: 0.5em;
+  opacity: 0.7;
+  border: 3px solid white;
   &:hover {
-    opacity: .2;
+    opacity: 1;
+    border: outset 5px $orange;
+  }
+  @media ( max-width: 414px) {
+    width: 32%;
+  }
+
+  @media ( max-width: 768px) {
+    width: 45%;
   }
 }
 
 .candidate-list {
-  padding-bottom: 5.5em;
+  padding-bottom: 6.7em;
   font-size: 1.25rem;
   strong {
     color: $orange;
   }
+}
+
+.map{
+  width: 960px
 }
 
 .mega-title {
