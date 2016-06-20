@@ -5,7 +5,7 @@ body {
   color: #333; }
   @media (max-width: 600px) {
     body {
-      font-size: 14px; } }
+      font-size: 12px; } }
 
 h1 {
   color: #F36228;
@@ -34,25 +34,31 @@ a {
   a:hover, a:focus {
     border-bottom-color: #2275d7; }
 
+a.samples-sites {
+  border-bottom: 0;
+  color: white; }
+  a.samples-sites:hover {
+    color: #f8a989; }
+
 figure {
   margin-bottom: 1rem; }
   figure figcaption {
-    font-size: 85%;
-    color: #ccc;
+    font-size: 0.8125rem;
+    color: #F36228;
     font-style: italic; }
 
 .intro {
   font-weight: bold;
-  font-size: 125%; }
+  font-size: 1rem; }
   @media (max-width: 600px) {
     .intro {
-      font-size: 110%; } }
+      font-size: 1.063rem; } }
 
 .big-note {
   color: black;
   text-align: center;
-  margin: 20px 30px;
-  font-size: 135%; }
+  margin: 0px 0px;
+  font-size: 1.313rem; }
 
 .arrow-header {
   display: inline-block;
@@ -60,7 +66,7 @@ figure {
   text-align: center;
   color: #F36228;
   font-size: 2rem;
-  margin: 4rem 0 2rem;
+  margin: 2rem 0 2rem;
   position: relative; }
   .arrow-header:after {
     content: "";
@@ -183,7 +189,7 @@ figure {
       background: rgba(0, 0, 0, 0.6); }
 
 .site-footer {
-  background: #F36228 url(../images/footer.jpg) top center;
+  background: #F36228 url(../images/ionic-group1.jpg) top center;
   background-size: cover;
   padding-top: 800px;
   padding-bottom: 50px;
@@ -234,7 +240,7 @@ figure {
       border-bottom-style: solid; }
 
 .wrap {
-  max-width: 900px;
+  max-width: 925px;
   padding: 0 20px;
   margin: 0 auto;
   overflow: hidden; }
@@ -251,7 +257,12 @@ img {
   float: right;
   padding-left: 30px; }
   .sidebar .module {
-    font-size: 85%; }
+    font-size: 1rem; }
+
+video {
+  width: 100%;
+  background-color: #F36228;
+  margin-bottom: 2em; }
 
 @media (max-width: 600px) {
   .main,
@@ -269,7 +280,7 @@ img {
   color: white;
   padding: 15px; }
   .schedule h5 {
-    font-size: 120%;
+    font-size: 1.188rem;
     margin: 0 0 0.5rem 0;
     text-align: center;
     background: #F36228;
@@ -290,7 +301,7 @@ img {
   margin-bottom: 50px; }
 
 .about {
-  font-size: 125%; }
+  font-size: 1.25rem; }
 
 .things {
   padding-right: 20px; }
@@ -303,20 +314,53 @@ img {
   .candidate {
     padding: 0; } }
 
+.video {
+  width: 100%;
+  height: 200px;
+  border: 0;
+  margin-bottom: 3.2em; }
+
 .things-to-know-list {
   background: #373636;
   padding: 25px 40px 35px;
   color: white;
-  margin-bottom: 20px; }
+  margin-bottom: 1em; }
   .things-to-know-list li {
     margin: 0 0 20px 0; }
     .things-to-know-list li:last-child {
       margin: 0; }
+  .things-to-know-list strong {
+    color: #F36228; }
+
+#box {
+  text-align: center; }
+
+.port {
+  width: 32.5%;
+  margin-top: 0.5em;
+  opacity: 0.7;
+  border: 3px solid white; }
+  .port:hover {
+    opacity: 1;
+    border: solid 5px #F36228; }
+  @media (max-width: 414px) {
+    .port {
+      width: 32%; } }
+  @media (max-width: 768px) {
+    .port {
+      width: 45%; } }
 
 .candidate-list {
-  font-size: 125%; }
+  padding-bottom: 6.7em;
+  font-size: 1.25rem; }
   .candidate-list strong {
     color: #F36228; }
+
+.map {
+  width: 900px;
+  height: 250px;
+  margin-bottom: 3.5em;
+  border-bottom: 5px solid #F36228; }
 
 .mega-title {
   color: white;
@@ -329,12 +373,18 @@ img {
     .mega-title {
       font-size: 3.2rem; } }
 
-.help-grid .module {
-  padding-right: 20px; }
+.help-grid {
+  width: 965px; }
+  .help-grid .module {
+    padding-right: 35px; }
+    .help-grid .module img {
+      width: 100%; }
 
 .contact-form {
+  width: 100%;
   padding: 40px;
-  border: 30px solid #eee; }
+  border: 30px solid #eee;
+  margin-bottom: 3em; }
   @media (max-width: 600px) {
     .contact-form {
       padding: 5px; } }
