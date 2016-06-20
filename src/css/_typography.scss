@@ -4,7 +4,7 @@ body {
   font-size: 16px;
   color: #333;
   @media #{$breakpoint} {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 
@@ -40,28 +40,39 @@ a {
   }
 }
 
+a.samples-sites  {
+  border-bottom: 0;
+  color: white;  
+  
+  &:hover {
+    color: lighten($orange, 20%);
+  }
+}
+
+
 figure {
   margin-bottom: 1rem;
   figcaption {
-    font-size: 85%;
-    color: #ccc;
+    font-size: 0.8125rem;
+    color: #F36228;
     font-style: italic;
   }
 }
 
 .intro {
   font-weight: bold;
-  font-size: 125%;
+  font-size: 1rem;
   @media #{$breakpoint} {
-    font-size: 110%;
+    font-size: 1.063rem;
   }
 }
 
 .big-note {
   color: black;
   text-align: center;
-  margin: 20px 30px;
-  font-size: 135%;
+  margin: 0px 0px;
+  font-size: 1.313rem;
+
 }
 
 .arrow-header {
@@ -70,7 +81,7 @@ figure {
   text-align: center;
   color: $orange;
   font-size: 2rem;
-  margin: 4rem 0 2rem;
+  margin: 2rem 0 2rem;
   position: relative;
   &:after {
     content: "";
