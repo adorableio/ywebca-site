@@ -217,6 +217,7 @@ figure {
 
 .site-header,
 .mega-header {
+  background: #F36228;
   background: linear-gradient(to top, rgba(243, 98, 40, 0.3) 0, rgba(243, 98, 40, 0.3) 4px, white 4px, white 6px, rgba(243, 98, 40, 0.5) 6px, rgba(243, 98, 40, 0.5) 16px, white 16px, white 19px, rgba(243, 98, 40, 0.7) 18px, rgba(243, 98, 40, 0.7) 40px, white 40px, white 43px, #F36228 43px, #F36228);
   padding: 80px 20px;
   position: relative;
