@@ -176,8 +176,7 @@ video {
       margin: 0;
     }
   }
-
-  strong{
+    strong {
     color: $orange;
   }
 }
@@ -193,7 +192,7 @@ video {
   border: 3px solid white;
   &:hover {
     opacity: 1;
-    border: outset 5px $orange;
+    border: solid 5px $orange;
   }
   @media ( max-width: 414px) {
     width: 32%;
