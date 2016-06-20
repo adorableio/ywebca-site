@@ -70,8 +70,9 @@ figure {
 .big-note {
   color: black;
   text-align: center;
-  margin: 20px 30px;
+  margin: 0px 0px;
   font-size: 1.313rem;
+
 }
 
 .arrow-header {
@@ -80,7 +81,7 @@ figure {
   text-align: center;
   color: $orange;
   font-size: 2rem;
-  margin: 4rem 0 2rem;
+  margin: 2rem 0 2rem;
   position: relative;
   &:after {
     content: "";

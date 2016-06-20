@@ -167,9 +167,8 @@ video {
 .things-to-know-list {
   background: $darkgray;
   padding: 25px 40px 35px;
-
   color: white;
-  margin-bottom: 20px;
+  margin-bottom: 1em;
   li {
     margin: 0 0 20px 0;
     &:last-child {
@@ -212,7 +211,10 @@ video {
 }
 
 .map{
-  width: 960px
+  width: 900px;
+  height:250px;
+  margin-bottom: 3.5em;
+  border-bottom: 5px solid $orange;
 }
 
 .mega-title {
@@ -242,6 +244,7 @@ video {
   width: 100%;
   padding: 40px;
   border: 30px solid #eee;
+  margin-bottom: 3em;
   @media #{$breakpoint} {
     padding: 5px;
   }
