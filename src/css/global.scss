@@ -114,7 +114,7 @@ video {
   color: white;
   padding: 15px;
   h5 {
-    font-size: 1.188rem;
+    font-size: 1.2em;
     margin: 0 0 0.5rem 0;
     text-align: center;
     background: $orange;
@@ -142,7 +142,7 @@ video {
 }
 
 .about {
-  font-size: 1rem;
+  font-size: 1em;
 }
 
 .things {
@@ -160,7 +160,7 @@ video {
 
 #donate {
   p {
-    font-size: 1.25rem;
+    font-size: 1.2em;
   }
  }
 .video {
@@ -175,7 +175,7 @@ video {
   padding: 25px 40px 35px;
   color: white;
   margin-bottom: 1em;
-  font-size: 1.25rem;
+  font-size: 1.25em;
   li {
     margin: 0 0 20px 0;
     &:last-child {
@@ -211,7 +211,7 @@ video {
 
 .candidate-list {
   padding-bottom: 6.7em;
-  font-size: 1.25rem;
+  font-size: 1.25em;
   strong {
     color: $orange;
   }
@@ -226,14 +226,14 @@ video {
 
 .mega-title {
   color: white;
-  font-size: 5.4rem;
+  font-size: 5.4em;
   margin: 0 0 2rem 0;
   span {
     text-transform: uppercase;
     border-bottom: 10px solid white;
   }
   @media #{$breakpoint} {
-    font-size: 3.2rem;
+    font-size: 3.2em;
   }
 }
 
