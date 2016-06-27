@@ -9,19 +9,19 @@ body {
 
 h1 {
   color: #F36228;
-  font-size: 2.5rem;
+  font-size: 2em;
   margin: 0 0 0.3rem 0; }
 
 h2 {
   color: #F36228;
   text-transform: uppercase;
-  font-size: 1.2rem;
+  font-size: 1.5em;
   margin: 0 0 0.2rem 0; }
 
 h3 {
   color: #373636;
   text-transform: uppercase;
-  font-size: 1.1rem;
+  font-size: 1em;
   margin: 0 0 0.2rem 0; }
 
 p {
@@ -43,29 +43,29 @@ a.samples-sites {
 figure {
   margin-bottom: 1rem; }
   figure figcaption {
-    font-size: 0.8125rem;
+    font-size: 0.85em;
     color: #F36228;
     font-style: italic; }
 
 .intro {
   font-weight: bold;
-  font-size: 1rem; }
+  font-size: 1em; }
   @media (max-width: 600px) {
     .intro {
-      font-size: 1.063rem; } }
+      font-size: 1.063em; } }
 
 .big-note {
   color: black;
   text-align: center;
   margin: 0px 0px;
-  font-size: 1.313rem; }
+  font-size: 1.25em; }
 
 .arrow-header {
   display: inline-block;
   border-bottom: 10px solid #F36228;
   text-align: center;
   color: #F36228;
-  font-size: 2rem;
+  font-size: 2em;
   margin: 2rem 0 2rem;
   position: relative; }
   .arrow-header:after {
@@ -280,7 +280,7 @@ video {
   color: white;
   padding: 15px; }
   .schedule h5 {
-    font-size: 1.188rem;
+    font-size: 1.2em;
     margin: 0 0 0.5rem 0;
     text-align: center;
     background: #F36228;
@@ -301,7 +301,7 @@ video {
   margin-bottom: 50px; }
 
 .about {
-  font-size: 1.25rem; }
+  font-size: 1em; }
 
 .things {
   padding-right: 20px; }
@@ -314,6 +314,9 @@ video {
   .candidate {
     padding: 0; } }
 
+#donate p {
+  font-size: 1.2em; }
+
 .video {
   width: 100%;
   height: 200px;
@@ -324,7 +327,8 @@ video {
   background: #373636;
   padding: 25px 40px 35px;
   color: white;
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  font-size: 1.25em; }
   .things-to-know-list li {
     margin: 0 0 20px 0; }
     .things-to-know-list li:last-child {
@@ -336,7 +340,7 @@ video {
   text-align: center; }
 
 .port {
-  width: 32.5%;
+  width: 28%;
   margin-top: 0.5em;
   opacity: 0.7;
   border: 3px solid white; }
@@ -352,7 +356,7 @@ video {
 
 .candidate-list {
   padding-bottom: 6.7em;
-  font-size: 1.25rem; }
+  font-size: 1.25em; }
   .candidate-list strong {
     color: #F36228; }
 
@@ -364,14 +368,14 @@ video {
 
 .mega-title {
   color: white;
-  font-size: 5.4rem;
+  font-size: 5.4em;
   margin: 0 0 2rem 0; }
   .mega-title span {
     text-transform: uppercase;
     border-bottom: 10px solid white; }
   @media (max-width: 600px) {
     .mega-title {
-      font-size: 3.2rem; } }
+      font-size: 3.2em; } }
 
 .help-grid {
   width: 965px; }
